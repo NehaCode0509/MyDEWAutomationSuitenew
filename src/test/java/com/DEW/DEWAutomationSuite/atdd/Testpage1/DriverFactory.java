@@ -23,6 +23,7 @@ public class DriverFactory {
 	            throw new IllegalArgumentException("Unsupported browser: " + browser);
 	        }
 	        return driver;
+	        
 	    }
 
 	    /**
