@@ -13,7 +13,7 @@ package com.DEW.DEWAutomationSuite.atdd.testrunner;
 	dryRun = false,
 	plugin = { "pretty","html:target/HTMLreports", }, 
 	monochrome = true,
-	tags = "@functional1")
+	tags = "@WellPermit")
 	 
 	public class TestRunner {
 		

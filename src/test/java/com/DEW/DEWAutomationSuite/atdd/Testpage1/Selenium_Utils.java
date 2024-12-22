@@ -21,16 +21,18 @@ import javax.imageio.ImageIO;
 
 public class Selenium_Utils {
 	
-	private WebDriverWait wait;
+	private static WebDriverWait wait;
 	private WebDriver driver;
 	
-	public Selenium_Utils(int timeoutInSeconds)
+	public Selenium_Utils()
 	{
 		driver = DriverFactory.getDriver();
 	
 	}
 
-	public void waitForJSandJQueryToLoad(WebDriver driver) {
+
+
+	public  static void  waitForJSandJQueryToLoad(WebDriver driver) {
 	    // Use Duration to specify timeout
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
@@ -53,16 +55,16 @@ public class Selenium_Utils {
 	    wait.until(jQueryLoad);
 	}
 	 // Method to wait for an element to be visible
-    public WebElement waitForElementToBeVisible(By locator) {
+    public static WebElement waitForElementToBeVisible(By locator) throws Exception {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
     
     // Method to wait for an element to be clickable
-    public WebElement waitForElementToBeClickable(By locator) {
+    public static WebElement waitForElementToBeClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
     // Method to wait for JavaScript and jQuery to load
-    public void waitForJSandJQueryToLoad() {
+    public static void waitForJSandJQueryToLoad() {
         // Wait for JavaScript to load
         ExpectedCondition<Boolean> jsLoad = drv -> 
             ((JavascriptExecutor) drv).executeScript("return document.readyState").equals("complete");
@@ -82,7 +84,7 @@ public class Selenium_Utils {
     }
 
     // Method to take a screenshot and save it to a specified location
-    public void takeScreenshot(String fileName,WebDriver driver) {
+    public static  void takeScreenshot(String fileName,WebDriver driver) {
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             File destFile = new File(fileName);
@@ -99,6 +101,23 @@ public class Selenium_Utils {
         }
     }
 
- 
 
-}
+    // Method to select value by visible text
+    public static void selectByVisibleText(WebElement dropdownElement, String Visibletext) {
+    	 try {
+             // Initialize the Select class
+             Select dropdown = new Select(dropdownElement);
+
+             // Select by visible text
+             dropdown.selectByVisibleText(Visibletext);
+
+             System.out.println("Option selected: " + Visibletext);
+         } catch (Exception e) {
+             System.err.println("Unable to select the option: " + Visibletext);
+             e.printStackTrace();
+         }
+     }
+    }
+
+
+
