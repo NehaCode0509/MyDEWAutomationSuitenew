@@ -1,4 +1,4 @@
-@WellPermit @functional1
+@WellPermit @Regression
 Feature: New Application for Well Permit
 
   Scenario Outline: As a user, I want to open new application for Well Permit
@@ -15,4 +15,4 @@ Feature: New Application for Well Permit
     Then User add attachment and reviews to record type
     And User pays the fees and click on next
     And User has successfully submit the application
-    ##  | nehasinha44@gmail.com | mca6019/04## |
+    ##  | surendra.singh@sa./gov.au | sambroo |

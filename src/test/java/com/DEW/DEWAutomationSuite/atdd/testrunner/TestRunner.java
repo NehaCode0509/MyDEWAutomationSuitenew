@@ -11,7 +11,7 @@ package com.DEW.DEWAutomationSuite.atdd.testrunner;
 	@CucumberOptions(features = "src/test/resources/functional", 
 	glue = { "com.DEW.DEWAutomation.atdd.stepdefinitions", },
 	dryRun = false,
-	plugin = { "pretty","html:target/HTMLreports", }, 
+	plugin = { "pretty","html:target/cucumber-reports.html", "json:target/cucumber-reports.json" }, 
 	monochrome = true,
 	tags = "@WellPermit")
 	 

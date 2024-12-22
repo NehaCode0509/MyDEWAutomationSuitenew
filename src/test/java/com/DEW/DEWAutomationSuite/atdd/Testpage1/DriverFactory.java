@@ -29,7 +29,7 @@ public class DriverFactory {
 	            throw new IllegalArgumentException("Unsupported browser: " + browser);
 	        }
 	        
-	        if (browser.equalsIgnoreCase("chrome")) {
+	  /*      if (browser.equalsIgnoreCase("chrome")) {
 	            System.setProperty("webdriver.chrome.driver", "C:/Users/SSingh2/Documents/eclipse-workspace/DewAutomationSuite/chromedriver.exe");
 	            ChromeOptions options = new ChromeOptions();
 	            options.addArguments("--start-maximized");
@@ -55,6 +55,7 @@ public class DriverFactory {
 	        } else {
 	            throw new IllegalArgumentException("Unsupported browser: " + browser);
 	        }
+	        */
 	        return driver;
 	        
 	        

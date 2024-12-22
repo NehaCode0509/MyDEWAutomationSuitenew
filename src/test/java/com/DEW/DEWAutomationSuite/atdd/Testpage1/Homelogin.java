@@ -2,6 +2,7 @@ package com.DEW.DEWAutomationSuite.atdd.Testpage1;
 
 import org.openqa.selenium.By;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
+import com.DEW.DEWAutomationSuite.atdd.Testpage1.Selenium_Utils;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -56,7 +57,7 @@ public void LoginApp() throws Exception
 		 String username = doc.getElementsByTagName("username").item(0).getTextContent();
 		 String password1 = doc.getElementsByTagName("password").item(0).getTextContent();
 		 System.out.println("I am before objects");
-		 Thread.sleep(15000);
+		 Thread.sleep(5000);
 	       // Switch to iframe by index (e.g., first iframe on the page)
          driver.switchTo().frame(0);
          
@@ -86,15 +87,7 @@ public void LaunchAppUrl() throws Exception
 	 
 }
 	
-public void Login_Home_page() throws Exception
-{
-	 System.out.println("success");
-	 WebDriverManager.chromedriver().setup();
-	 driver = new ChromeDriver();
-	 driver.manage().window().maximize();
-	 driver.get("https://www.Facebook.com");
-	 	}
-	 	
+
 
 
 public void LoginSuccessful()throws Exception

@@ -155,6 +155,8 @@ public class WellPermitPage {
 
 public void ClickOnStartNewApplication() throws Exception {
 	
+	Thread.sleep(5000);
+	driver.switchTo().frame(0);
 	StartNewApplication.click();
 	
 }
