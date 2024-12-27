@@ -140,6 +140,56 @@ public class Selenium_Utils extends DriverFactory {
     	        }
     	 
      }
+    	 
+    	 public static void safeJavaScriptSendKeys(WebElement element, String value) {
+    	        try {
+    	            // Wait until the element is present and interactable
+    	            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	            wait.until(ExpectedConditions.visibilityOf(element));
+    	            wait.until(ExpectedConditions.elementToBeClickable(element));
+
+    	            // Scroll the element into view if needed
+    	            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+    	            // Clear the existing value (if necessary)
+    	            ((JavascriptExecutor) driver).executeScript("arguments[0].value = '';", element);
+
+    	            // Set the value using JavaScript
+    	            ((JavascriptExecutor) driver).executeScript("arguments[0].value = arguments[1];", element, value);
+
+    	        } catch (Exception e) {
+    	            System.out.println("Unable to perform JavaScript sendKeys: " + e.getMessage());
+    	        }
+    	    }
+    	 //Highlights an element by changing its border or background color.
+    	 public static void highlightElement(WebElement element) {
+    		    try {
+    		        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red';", element);
+    		    } catch (Exception e) {
+    		        System.out.println("Failed to highlight element: " + e.getMessage());
+    		    }
+    		}
+    	 
+    	 //Waits for an element to become visible using JavaScript.
+    	 public static void safeWaitForVisibility(WebElement element, int timeoutInSeconds) {
+    		    try {
+    		        new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds)).until(webDriver ->
+    		            (Boolean) ((JavascriptExecutor) webDriver).executeScript("return arguments[0].offsetParent !== null;", element)
+    		        );
+    		    } catch (Exception e) {
+    		        System.out.println("Element not visible within timeout: " + e.getMessage());
+    		    }
+    		}
+    	 
+    	 //Method Safe JavaScript Scroll
+    	 
+    	 public static void SafeJavasafeScrollToElement(WebElement element) {
+    	    try {
+    	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element);
+    	    } catch (Exception e) {
+    	        System.out.println("Failed to scroll to element: " + e.getMessage());
+    	    }
+    	}
     }
 
 
