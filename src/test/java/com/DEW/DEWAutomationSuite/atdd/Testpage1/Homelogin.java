@@ -37,7 +37,10 @@ public class Homelogin extends Selenium_Utils {
 	 @FindBy(how = How.XPATH,using = "//*[contains(text(),'Log in')]")
 	 private WebElement LoginButton;
 	 
+	 @FindBy(how = How.XPATH,using = "//*[@src='/aca/Customization/images/mywater-graphic-teal.png']")
+	 private WebElement MyWaterLogo;
 	 
+
 	WebDriver driver = DriverFactory.getDriver();
 	
 	
@@ -61,8 +64,11 @@ public void LoginApp() throws Exception
 	       // Switch to iframe by index (e.g., first iframe on the page)
          driver.switchTo().frame(0);
          
+         highlightElement(login);
 		 login.sendKeys(username);
+		 highlightElement(password);
 		 password.sendKeys(password1);
+		 highlightElement(LoginButton);
 		 LoginButton.click();
 	}
 	catch (Exception e) {
@@ -92,6 +98,10 @@ public void LaunchAppUrl() throws Exception
 
 public void LoginSuccessful()throws Exception
 {
-	System.out.println("Success");
+	Thread.sleep(8000);
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+	highlightElement(MyWaterLogo);
+	
 }
 }

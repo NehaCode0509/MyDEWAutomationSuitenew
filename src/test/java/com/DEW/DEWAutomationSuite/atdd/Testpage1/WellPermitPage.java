@@ -158,6 +158,15 @@ public class WellPermitPage extends Selenium_Utils {
 	  	 @FindBy(how = How.XPATH,using = "//*[@id='ctl00_PlaceHolderMain_AppSpec79B4EEBDEdit_DEW_ddl_0_4']")
 	 private WebElement  UseofProposedWell ;
 	  	 
+	  	 
+	  	 @FindBy(how = How.XPATH,using = "//*[@id='ctl00_PlaceHolderMain_permitSuccessInfo_lblMessage']")
+	 private WebElement  RecordSubmittedmessage ;
+	  	 
+		 @FindBy(how = How.XPATH,using = "//*[@id='ctl00_HeaderNavigation_com_headNav_label_b']")
+		 private WebElement  DashboardNavLink;
+	  	
+	  	
+	  	 
 		 @FindBy(how = How.XPATH,using = "//a[@id='ctl00_PlaceHolderMain_lnkContinueApplication']")
 		 private WebElement  ContinueApplicationButton ;
 	  	 
@@ -371,7 +380,7 @@ public void PayFees() throws Exception {
 	waitForJSandJQueryToLoad(driver);
 	waitForPageLoad(driver);
 	highlightElement(VisaCardNumber);
-	VisaCardNumber.sendKeys("444444444441");
+	VisaCardNumber.sendKeys("4012888888881881");
 	highlightElement(ExpiryMonth);
 	ExpiryMonth.sendKeys("11");
 	highlightElement(ExpiryYear);
@@ -379,14 +388,26 @@ public void PayFees() throws Exception {
 	highlightElement(CVN);
 	CVN.sendKeys("999");
 	Thread.sleep(3000);
+	highlightElement(NextButton);
+	safeJavaScriptClick(NextButton);
+	Thread.sleep(5000);
+	highlightElement(Captcha);
+	safeJavaScriptClick(Captcha);
 	highlightElement(Pay);
-	Pay.click();
+	safeJavaScriptClick(Pay);
+	Thread.sleep(7000);
 }
 
 public void SuccessfullySubmitApplication()throws Exception {
 	Thread.sleep(8000);
 	waitForJSandJQueryToLoad(driver);
 	waitForPageLoad(driver);
+	highlightElement(RecordSubmittedmessage);
+	highlightElement(DashboardNavLink);
+	Thread.sleep(3000);
+	safeJavaScriptClick(DashboardNavLink);
+	
+	Thread.sleep(3000);
 	
 	
 }
