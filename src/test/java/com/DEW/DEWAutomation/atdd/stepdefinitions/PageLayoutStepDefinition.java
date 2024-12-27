@@ -2,7 +2,7 @@ package com.DEW.DEWAutomation.atdd.stepdefinitions;
 
 import java.util.List;
 
-
+import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.Homelogin;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.WellPermitPage;
 
@@ -11,20 +11,25 @@ import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
 //import com.DEW.DEWAutomation.stepDefinitions.Home;
 
-public class PageLayoutStepDefinition {
+public class PageLayoutStepDefinition extends DriverFactory {
 	
-	Homelogin homelogin ;
-	WellPermitPage wellpermitpage;
-
+	
+	
+	Homelogin homelogin;
+	WellPermitPage wellpermitpage ;
+	
 	public PageLayoutStepDefinition()
 	{
 		homelogin = new Homelogin();
-		wellpermitpage = new WellPermitPage ();
+		wellpermitpage  = new WellPermitPage ();
+;
 	}
 	
 	@Given("User launch the Access my water homepage")

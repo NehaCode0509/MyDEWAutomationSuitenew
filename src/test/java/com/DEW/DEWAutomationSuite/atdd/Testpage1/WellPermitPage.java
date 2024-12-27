@@ -1,7 +1,7 @@
 package com.DEW.DEWAutomationSuite.atdd.Testpage1;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.Selenium_Utils.*;
 import org.openqa.selenium.By;
-import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
+import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory.*;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
@@ -28,13 +28,17 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class WellPermitPage {
+public class WellPermitPage extends Selenium_Utils {
 
 	
 	 @FindBy(how = How.XPATH ,using = "//*[contains(text(),'Start New Application')]")
 	 private WebElement StartNewApplication;
 	 
-	 @FindBy(how = How.XPATH,using = "(//a[contains(@href, './Cap/CapApplyDisclaimer.aspx?module=WaterPermits')])[3")
+	 @FindBy(how = How.XPATH ,using = "//*[@class='loggedin dashboard]")
+	 private WebElement DashboardBody;
+	
+	 
+	 @FindBy(how = How.XPATH,using = "(//a[contains(@href, './Cap/CapApplyDisclaimer.aspx?module=WaterPermits')])[3]")
 	 private WebElement WellConstructionPermit;
 	 
 	 @FindBy(how = How.XPATH,using = "//*[contains(text(),' Water Affecting Activity Permits')]")
@@ -139,13 +143,13 @@ public class WellPermitPage {
 	  	 @FindBy(how = How.XPATH,using = "//*[@id='ctl00_PlaceHolderMain_AppSpec79B4EEBDEdit_DEW_ddl_0_4']")
 	 private WebElement  UseofProposedWell ;
  
-	 
-	WebDriver driver = DriverFactory.initializeDriver("edge");
-	
+	  	WebDriver driver = DriverFactory.getDriver() ; 
+	  
 
 	
 	public WellPermitPage()
 	{
+		
 		PageFactory.initElements(driver,this);
 	}
 
@@ -156,48 +160,85 @@ public class WellPermitPage {
 public void ClickOnStartNewApplication() throws Exception {
 	
 	Thread.sleep(5000);
-	driver.switchTo().frame(0);
-	StartNewApplication.click();
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+	safeJavaScriptClick(DashboardBody);
+	safeJavaScriptClick(StartNewApplication);
+	//driver.switchTo().frame(0);
+	//StartNewApplication.click();
 	
 }
 
 public void ClickOnWaterAffectingActivityPermits()  throws Exception {
 	
-	WaterAffectingActivityPermits.click();
+	Thread.sleep(5000);
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+	safeJavaScriptClick(WaterAffectingActivityPermits);
 	
 	
 }
 
 public void user_click_on_well_construction_permit_applications()  throws Exception {
-	// TODO Auto-generated method stub
-	WellConstructionPermit.click();
+
+
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+	System.out.println("I am before Safe java script in well construction permit");
+	safeJavaScriptClick(WellConstructionPermit);
+	//WellConstructionPermit.click();
+	System.out.println("I am after well construction permit simple click");
 	
 }
 
 public void ClickonContinueApplication()  throws Exception {
+	
+	Thread.sleep(5000);
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+//	System.out.println("I am before Safe java script in TermandConditionCheckbox");
+	//safeJavaScriptClick(TermandConditionCheckbox);
 	TermandConditionCheckbox.click();
+//	System.out.println("I am after TermandConditionCheckbox simple click");
+	
+//	System.out.println("I am before Safe java script in ContinueApplication");
+	//safeJavaScriptClick(ContinueApplication);
 	ContinueApplication.click();
+	
+//	System.out.println("I am after ContinueApplicationsimple click"); 
 	Thread.sleep(3000);
 }
 
 public void ClickOnAddNewButton()  throws Exception {
-	Thread.sleep(3000);
+	Thread.sleep(5000);
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
+	//safeJavaScriptClick(ContinueApplication);
 	ContinueApplication.click();
-	AddNew.click();
+	safeJavaScriptClick(AddNew);
+	//AddNew.click();
 	
 }
 
 public void FillTheContactInformationPage()  throws Exception {
 	
 	Thread.sleep(8000);
+	waitForJSandJQueryToLoad(driver);
+	waitForPageLoad(driver);
     // Switch to iframe by index (e.g., first iframe on the page)
     driver.switchTo().frame(ACAFrame);
-    Type.click();
+	safeJavaScriptClick(Type);
+	GivenName.click();
+	GivenName.clear();
     GivenName.sendKeys("Test First Name");
+    LastName.click();
+    LastName.click();
     LastName.sendKeys("Test Last Name");
+    MobileNumber.click();
+    MobileNumber.click();
     MobileNumber.sendKeys("0466171223");
-    ContactAddress.click();
-    driver.switchTo().frame(ACAFrame);
+    safeJavaScriptClick(ContactAddress);
+     driver.switchTo().frame(ACAFrame);
     selectByVisibleText(Addresstype, "Postal");
     selectByVisibleText(Addresstype, "Street adress");
     selectByVisibleText(Addresstype, "Australia");
@@ -205,10 +246,6 @@ public void FillTheContactInformationPage()  throws Exception {
 }
 
 
-private void selectByVisibleText(WebElement addresstype2, String string) {
-	// TODO Auto-generated method stub
-	
-}
 
 
 

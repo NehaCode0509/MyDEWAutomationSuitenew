@@ -27,7 +27,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Homelogin {
+public class Homelogin extends Selenium_Utils {
 
 	
 	 @FindBy(how = How.XPATH ,using = "//*[@name='username']")
@@ -38,7 +38,7 @@ public class Homelogin {
 	 private WebElement LoginButton;
 	 
 	 
-	WebDriver driver = DriverFactory.initializeDriver("edge");
+	WebDriver driver = DriverFactory.getDriver();
 	
 	
 	

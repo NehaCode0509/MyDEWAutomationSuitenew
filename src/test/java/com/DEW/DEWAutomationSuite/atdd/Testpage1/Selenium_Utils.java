@@ -19,10 +19,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
-public class Selenium_Utils {
+public class Selenium_Utils extends DriverFactory {
 	
 	private static WebDriverWait wait;
-	private WebDriver driver;
+	 static WebDriver driver = DriverFactory.getDriver();
 	
 	public Selenium_Utils()
 	{
@@ -101,6 +101,12 @@ public class Selenium_Utils {
         }
     }
 
+    public static void waitForPageLoad(WebDriver driver)
+    {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(webDriver -> ((org.openqa.selenium.JavascriptExecutor) webDriver)
+                .executeScript("return document.readyState").equals("complete"));
+    }
 
     // Method to select value by visible text
     public static void selectByVisibleText(WebElement dropdownElement, String Visibletext) {
@@ -116,6 +122,23 @@ public class Selenium_Utils {
              System.err.println("Unable to select the option: " + Visibletext);
              e.printStackTrace();
          }
+    	 
+    }
+    	 //Method for Safe Java Script click
+    	 public static void safeJavaScriptClick(WebElement element) {
+    	        try {
+    	        	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	            wait.until(ExpectedConditions.elementToBeClickable(element));
+
+    	            // Scroll the element into view if needed
+    	            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+    	            // Click the element using JavaScript
+    	            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    	        } catch (Exception e) {
+    	            System.out.println("Unable to perform JavaScript click: " + e.getMessage());
+    	        }
+    	 
      }
     }
 

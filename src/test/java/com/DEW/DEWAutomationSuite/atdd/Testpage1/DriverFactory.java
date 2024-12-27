@@ -11,8 +11,8 @@ import org.openqa.selenium.safari.SafariOptions;
 
 public class DriverFactory {
 	
-	  private static WebDriver driver;
-
+	  private static WebDriver driver  = DriverFactory.initializeDriver("edge");
+//	  WebDriver driver = DriverFactory.initializeDriver("edge");
 	    /**
 	     * Initializes the WebDriver instance based on the specified browser type.
 	     *
