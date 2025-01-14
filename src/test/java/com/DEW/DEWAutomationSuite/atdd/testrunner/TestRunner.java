@@ -12,9 +12,9 @@ package com.DEW.DEWAutomationSuite.atdd.testrunner;
 	@CucumberOptions(features = "src/test/resources/functional", 
 	glue = { "com.DEW.DEWAutomation.atdd.stepdefinitions", },
 	dryRun = false,
-	plugin = { "pretty","json:target/cucumber-reports.json" }, 
+	plugin = { "pretty","json:target/cucumber.json" }, 
 	monochrome = true,
-	tags = "@GoogleTest ")
+	tags = "@GoogleTest")
 	 
 	public class TestRunner {
 		
