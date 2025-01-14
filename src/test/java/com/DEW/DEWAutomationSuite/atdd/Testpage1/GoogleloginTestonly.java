@@ -1,5 +1,7 @@
 package com.DEW.DEWAutomationSuite.atdd.Testpage1;
 
+
+
 import org.openqa.selenium.By;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.Selenium_Utils;
@@ -26,6 +28,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import  org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class GoogleloginTestonly extends Selenium_Utils {
 
@@ -39,9 +43,9 @@ public class GoogleloginTestonly extends Selenium_Utils {
 	 
 	 @FindBy(how = How.XPATH,using = "//*[@alt='Google']")
 	 private WebElement GoogleLogo;
-	 
+	 public static Logger log ;
 
-	 
+	  
 	WebDriver driver = DriverFactory.getDriver();
 	
 	
@@ -56,12 +60,15 @@ public class GoogleloginTestonly extends Selenium_Utils {
 public void LaunchAppUrl() throws Exception
 {
 	try {
+		
+		log=  LogManager.getLogger(GoogleloginTestonly.class);
 	DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder builder = factory.newDocumentBuilder();
 	Document doc = builder.parse("src/test/resources/readXMLdata.xml");
 	doc.getDocumentElement().normalize();
 	String AppURL = doc.getElementsByTagName("Urlnew").item(0).getTextContent();
 	System.out.println(AppURL);
+	log.info("Opened the browser");
 	driver.get(AppURL);
 	}
 	catch (Exception e) {
@@ -79,6 +86,7 @@ public void LoginSuccessful()throws Exception
 	waitForJSandJQueryToLoad(driver);
 	waitForPageLoad(driver);
 	highlightElement(GoogleLogo);
+	log.info("found the logo of google");
 	
 }
 
@@ -89,6 +97,7 @@ public void SearchKeyword() throws Exception{
 	waitForPageLoad(driver);
 	Search.sendKeys("Apple");
 	safeJavaScriptClick(SearchButton);
+	log.info("Entered apple and clicked on search button");
 	
 	
 }

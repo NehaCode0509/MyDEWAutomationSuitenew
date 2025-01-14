@@ -19,9 +19,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 
+
 public class Selenium_Utils extends DriverFactory {
 	
+
+	public static Logger log;
 	private static WebDriverWait wait;
+	
 	 static WebDriver driver = DriverFactory.getDriver();
 	
 	public Selenium_Utils()
@@ -181,6 +185,7 @@ public class Selenium_Utils extends DriverFactory {
     		    }
     		}
     	 
+    	
     	 //Method Safe JavaScript Scroll
     	 
     	 public static void SafeJavasafeScrollToElement(WebElement element) {
@@ -190,6 +195,10 @@ public class Selenium_Utils extends DriverFactory {
     	        System.out.println("Failed to scroll to element: " + e.getMessage());
     	    }
     	}
+    /*	 public static  Logger getLogger(Class<?> clazz) {
+    	        return LogManager.getLogger(clazz);
+    	    }*/
+
     }
 
 
