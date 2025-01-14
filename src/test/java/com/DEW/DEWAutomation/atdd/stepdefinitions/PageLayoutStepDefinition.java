@@ -5,7 +5,7 @@ import java.util.List;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.Homelogin;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.WellPermitPage;
-import com.DEW.DEWAutomationSuite.atdd.Testpage1.*;
+import com.DEW.DEWAutomationSuite.atdd.Testpage1.GoogleloginTestonly ;
 import io.cucumber.java.PendingException;
 //import cucumber.api.PendingException;
 import io.cucumber.java.en.Given;
