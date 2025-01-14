@@ -21,7 +21,7 @@ public class DriverFactory {
 	     */
 	    public static WebDriver initializeDriver(String browser) {
 	        if (browser.equalsIgnoreCase("edge")) {
-	            System.setProperty("webdriver.edge.driver", "C:/Users/SSingh2/Documents/eclipse-workspace/DewAutomationSuite/msedgedriver.exe");
+	            System.setProperty("webdriver.edge.driver", "C:/Users/suren/git/MyDEWAutomationSuite/msedgedriver.exe");
 	            EdgeOptions options = new EdgeOptions();
 	            options.addArguments("--start-maximized");
 	            driver = new EdgeDriver(options);

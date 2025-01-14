@@ -1,6 +1,7 @@
 package com.DEW.DEWAutomationSuite.atdd.testrunner;
 
 
+
 	import org.junit.runner.RunWith;
 	//import cucumber.api.CucumberOptions;
 	//import cucumber.api.junit.Cucumber;
@@ -13,7 +14,7 @@ package com.DEW.DEWAutomationSuite.atdd.testrunner;
 	dryRun = false,
 	plugin = { "pretty","html:target/cucumber-reports.html", "json:target/cucumber-reports.json" }, 
 	monochrome = true,
-	tags = "@WellPermit")
+	tags = "@GoogleTest")
 	 
 	public class TestRunner {
 		

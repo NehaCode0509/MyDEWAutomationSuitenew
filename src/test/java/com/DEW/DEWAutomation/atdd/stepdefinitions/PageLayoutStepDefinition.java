@@ -5,7 +5,7 @@ import java.util.List;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.DriverFactory;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.Homelogin;
 import com.DEW.DEWAutomationSuite.atdd.Testpage1.WellPermitPage;
-
+import com.DEW.DEWAutomationSuite.atdd.Testpage1.*;
 import io.cucumber.java.PendingException;
 //import cucumber.api.PendingException;
 import io.cucumber.java.en.Given;
@@ -24,11 +24,13 @@ public class PageLayoutStepDefinition extends DriverFactory {
 	
 	Homelogin homelogin;
 	WellPermitPage wellpermitpage ;
+	GoogleloginTestonly googlelogin;
 	
 	public PageLayoutStepDefinition()
 	{
 		homelogin = new Homelogin();
 		wellpermitpage  = new WellPermitPage ();
+		googlelogin = new GoogleloginTestonly();
 ;
 	}
 	
@@ -103,5 +105,22 @@ public class PageLayoutStepDefinition extends DriverFactory {
 		wellpermitpage.SuccessfullySubmitApplication();
 	   
 	}	
+	@Given("User launch the Google homepage")
+	public void user_launch_the_google_homepage() throws Exception{
+		googlelogin.LaunchAppUrl();
+	 
+	}
+	@When("User search any keyword")
+	public void user_search_any_keyword() throws Exception {
+	    // Write code here that turns the phrase above into concrete actions
+		googlelogin.SearchKeyword();
+	 
+	}
+	@Then("I can see results page successfully")
+	public void i_can_see_results_page_successfully()  throws Exception{
+		googlelogin.LoginSuccessful();
+	    
+	}
+
 
 }
