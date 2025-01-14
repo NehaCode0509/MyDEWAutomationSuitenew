@@ -23,7 +23,7 @@ import javax.imageio.ImageIO;
 public class Selenium_Utils extends DriverFactory {
 	
 
-	public static Logger log;
+	
 	private static WebDriverWait wait;
 	
 	 static WebDriver driver = DriverFactory.getDriver();
